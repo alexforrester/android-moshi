@@ -7,15 +7,15 @@ import com.squareup.moshi.JsonClass
  * Created by Alex Forrester on 11/04/2019.
  */
 @JsonClass(generateAdapter = true)
-data class MoviePages(
+data class MoviePages (
     val page: Int,
     @Json(name = "total_results") val totalResults: Int,
     @Json(name = "total_pages") val totalPages: Int,
-    val movies: List<Movie>
+    @Json(name = "results") val movies: List<Movie>
 )
 
 @JsonClass(generateAdapter = true)
-data class Movie(
+data class Movie (
     @Json(name = "vote_count") val voteCount: Int,
     val id: Int,
     val video: Boolean,
