@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
  * Created by Alex Forrester on 11/04/2019.
  */
 @JsonClass(generateAdapter = true)
-data class MoviePages (
+data class PopularMovies (
     val page: Int,
     @Json(name = "total_results") val totalResults: Int,
     @Json(name = "total_pages") val totalPages: Int,
@@ -30,3 +30,4 @@ data class Movie (
     val overview: String,
     @Json(name = "release_date") val releaseDate: String
 )
+

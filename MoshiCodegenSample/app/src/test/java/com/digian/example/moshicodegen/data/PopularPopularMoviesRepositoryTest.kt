@@ -1,45 +1,51 @@
 package com.digian.example.moshicodegen.data
 
-import com.digian.example.moshicodegen.JsonHelper
-import com.squareup.moshi.Moshi
+import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.function.Executable
+import java.io.*
 
 /**
  * Created by Alex Forrester on 11/04/2019.
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class PopularMoviesDataParsingTest {
 
-    private lateinit var popularMoviesJson: String
-    private val moshi = Moshi.Builder().build()
-    private lateinit var moviePages: MoviePages
+private const val ASSET_BASE_PATH = "../app/src/main/assets/"
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+internal class PopularPopularMoviesRepositoryTest {
+
+    private lateinit var popularMovies: PopularMovies
+    private val popularMoviesRepository: PopularMoviesRepository = object :
+       PopularMoviesRepositoryImpl(mockk()) {
+
+        override fun getInputStreamForJsonFile(fileName: String): InputStream {
+            return FileInputStream(ASSET_BASE_PATH + fileName)
+        }
+    }
 
     @BeforeAll
     internal fun setUp() {
-        popularMoviesJson = JsonTestHelper.readJson("popular_movies_list.json")
-        moviePages = JsonHelper.parseJson(popularMoviesJson, MoviePages::class.java)
+        popularMovies = popularMoviesRepository.getMovies()
     }
-
 
     @Test
     internal fun `test top level parsing of popular movies`() {
 
         assertAll(
             //Test Top Level Movie Parsing
-            Executable { assertEquals(356, moviePages.totalPages) },
-            Executable { assertEquals(7107, moviePages.totalResults) },
-            Executable { assertEquals(20, moviePages.movies.size) }
+            Executable { assertEquals(1, popularMovies.totalPages) },
+            Executable { assertEquals(20, popularMovies.totalResults) },
+            Executable { assertEquals(20, popularMovies.movies.size) }
         )
     }
 
     @Test
     internal fun `test individual popular movie is parsed correctly`() {
 
-        val movie = moviePages.movies[1]
+        val movie = popularMovies.movies[1]
 
         assertAll(
 
@@ -62,6 +68,13 @@ internal class PopularMoviesDataParsingTest {
             Executable { assertEquals("1994-09-23", movie.releaseDate) }
         )
     }
-
-
 }
+
+
+
+
+
+
+
+
+
