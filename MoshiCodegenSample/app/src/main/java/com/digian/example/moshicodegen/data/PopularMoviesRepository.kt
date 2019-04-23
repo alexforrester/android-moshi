@@ -1,26 +1,44 @@
 package com.digian.example.moshicodegen.data
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.Moshi
 import java.io.IOException
 import java.io.InputStream
+import androidx.lifecycle.MutableLiveData
 
 
 /**
  * Created by Alex Forrester on 17/04/2019.
  */
-
 internal interface PopularMoviesRepository {
-    fun getMovies(): PopularMovies
+    val popularMoviesLiveData: LiveData<PopularMovies>
+    fun getMovies(): LiveData<List<Movie>>
+    fun setMoviesData()
 }
 
 internal open class PopularMoviesRepositoryImpl(private val context: Context, private val moshi: Moshi = Moshi.Builder().build()) : PopularMoviesRepository {
 
-    override fun getMovies(): PopularMovies {
+    override val popularMoviesLiveData = MutableLiveData<PopularMovies>()
+    var isInitialized : Boolean = false
 
+
+    override fun setMoviesData() {
         val moviesJson = getMovieJSON()
-        return parseJson(moviesJson, PopularMovies::class.java)
+        val popularMovies = parseJson(moviesJson, PopularMovies::class.java)
+        popularMoviesLiveData.value = popularMovies
+    }
+
+    override fun getMovies() : LiveData<List<Movie>> {
+        if (!isInitialized) {
+            setMoviesData()
+            isInitialized = true
+        }
+
+        val moviesLiveData = MutableLiveData<List<Movie>>()
+        moviesLiveData.value = popularMoviesLiveData.value?.movies ?: emptyList()
+        return moviesLiveData
     }
 
     /**
@@ -31,12 +49,10 @@ internal open class PopularMoviesRepositoryImpl(private val context: Context, pr
     private inline fun <reified T: Any> parseJson(json: String, ofClass: Class<T>) : T {
 
         val jsonAdapter = moshi.adapter(ofClass)
-
         return jsonAdapter.fromJson(json)!!
     }
 
     private fun getMovieJSON(fileName : String = "popular_movies_list.json"): String {
-
         val inputStream = getInputStreamForJsonFile(fileName)
         return inputStream.bufferedReader().use { it.readText() }
     }

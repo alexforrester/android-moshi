@@ -1,12 +1,13 @@
 package com.digian.example.moshicodegen.data
 
-import io.mockk.mockk
+import androidx.lifecycle.*
+import io.mockk.*
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.function.Executable
-import java.io.*
+import java.io.FileInputStream
+import java.io.InputStream
 
 /**
  * Created by Alex Forrester on 11/04/2019.
@@ -14,38 +15,51 @@ import java.io.*
 
 private const val ASSET_BASE_PATH = "../app/src/main/assets/"
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ExtendWith(InstantExecutorExtension::class)
 internal class PopularPopularMoviesRepositoryTest {
 
-    private lateinit var popularMovies: PopularMovies
     private val popularMoviesRepository: PopularMoviesRepository = object :
-       PopularMoviesRepositoryImpl(mockk()) {
+        PopularMoviesRepositoryImpl(mockk()) {
 
         override fun getInputStreamForJsonFile(fileName: String): InputStream {
             return FileInputStream(ASSET_BASE_PATH + fileName)
         }
     }
 
-    @BeforeAll
-    internal fun setUp() {
-        popularMovies = popularMoviesRepository.getMovies()
+    @Test
+    internal fun `test live data updates of popular movies`() {
+
+        val observer = mockk<Observer<PopularMovies>>()
+        every{ observer.onChanged(any()) } just Runs
+
+        popularMoviesRepository.popularMoviesLiveData.observe(MoviesLifeCycleOwner(), observer)
+        popularMoviesRepository.setMoviesData()
+
+        verify { observer.onChanged(ofType(PopularMovies::class)) }
     }
 
     @Test
-    internal fun `test top level parsing of popular movies`() {
+    internal fun `test parsing of popular movies`() {
+
+        popularMoviesRepository.setMoviesData()
+
+        val popularMovies = popularMoviesRepository.popularMoviesLiveData.value
 
         assertAll(
-            //Test Top Level Movie Parsing
-            Executable { assertEquals(1, popularMovies.totalPages) },
-            Executable { assertEquals(20, popularMovies.totalResults) },
-            Executable { assertEquals(20, popularMovies.movies.size) }
+            Executable { assertEquals(1, popularMovies?.totalPages) },
+            Executable { assertEquals(20, popularMovies?.totalResults) },
+            Executable { assertEquals(20, popularMovies?.movies?.size) }
         )
     }
 
     @Test
     internal fun `test individual popular movie is parsed correctly`() {
 
-        val movie = popularMovies.movies[1]
+        popularMoviesRepository.setMoviesData()
+
+        val popularMovies = popularMoviesRepository.popularMoviesLiveData.value
+
+        val movie = popularMovies!!.movies[1]
 
         assertAll(
 
