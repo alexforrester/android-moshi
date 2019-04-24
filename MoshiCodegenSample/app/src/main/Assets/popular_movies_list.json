@@ -1,8 +1,4 @@
-{
-  "page": 1,
-  "total_results": 20,
-  "total_pages": 1,
-  "results": [
+ [
     {
       "vote_count": 2026,
       "id": 19404,
@@ -374,4 +370,3 @@
       "release_date": "1988-04-16"
     }
   ]
-}

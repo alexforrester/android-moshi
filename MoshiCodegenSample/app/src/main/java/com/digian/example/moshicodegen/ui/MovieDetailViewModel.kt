@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.digian.example.moshicodegen.data.PopularMoviesRepository
 import com.digian.example.moshicodegen.data.PopularMoviesRepositoryImpl
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.digian.example.moshicodegen.data.Movie
 
 
@@ -13,12 +14,15 @@ import com.digian.example.moshicodegen.data.Movie
  *
  * Simple ViewModel with no custom Dependency Injection
  */
-open class MoviesViewModel(application: Application) : AndroidViewModel(application) {
+open class MovieDetailViewModel(application: Application) : AndroidViewModel(application) {
 
     private val popularMoviesRepository: PopularMoviesRepository = getRepository()
 
-    fun getMovies() : LiveData<List<Movie>> {
-        return popularMoviesRepository.getMovies()
+    fun getMovie(movieId : Int) : LiveData<Movie> {
+
+        return Transformations.map(popularMoviesRepository.getMovies()) {
+            movieList -> movieList[movieId]
+        }
     }
 
     internal open fun getRepository() : PopularMoviesRepository {

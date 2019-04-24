@@ -27,11 +27,8 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         holder.textView.text = data?.get(position)?.title
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = data?.size ?: 0
 }

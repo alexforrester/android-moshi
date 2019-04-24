@@ -1,4 +1,4 @@
-package com.digian.example.moshicodegen.data
+package com.digian.example.moshicodegen
 
 import androidx.arch.core.executor.ArchTaskExecutor
 import androidx.arch.core.executor.TaskExecutor
@@ -7,9 +7,10 @@ import org.junit.jupiter.api.extension.BeforeEachCallback
 import org.junit.jupiter.api.extension.ExtensionContext
 
 /**
- * Created by Alex Forrester on 2019-04-23.
- *
+ * Created by Alex Forrester on 2019-04-23 from example in
  * [Jeroen Mols Blog](https://jeroenmols.com/blog/2019/01/17/livedatajunit5/)
+ *
+ * Used to be able to run synchronised tests on LiveData
  *
  */
 class InstantExecutorExtension : BeforeEachCallback, AfterEachCallback {

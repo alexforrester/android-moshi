@@ -1,6 +1,8 @@
 package com.digian.example.moshicodegen.data
 
 import androidx.lifecycle.*
+import com.digian.example.moshicodegen.InstantExecutorExtension
+import com.digian.example.moshicodegen.MoviesLifeCycleOwner
 import io.mockk.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -12,8 +14,7 @@ import java.io.InputStream
 /**
  * Created by Alex Forrester on 11/04/2019.
  */
-
-private const val ASSET_BASE_PATH = "../app/src/main/assets/"
+const val ASSET_BASE_PATH = "../app/src/main/assets/"
 
 @ExtendWith(InstantExecutorExtension::class)
 internal class PopularPopularMoviesRepositoryTest {
@@ -29,37 +30,30 @@ internal class PopularPopularMoviesRepositoryTest {
     @Test
     internal fun `test live data updates of popular movies`() {
 
-        val observer = mockk<Observer<PopularMovies>>()
+        val observer = mockk<Observer<List<Movie>>>()
         every{ observer.onChanged(any()) } just Runs
 
-        popularMoviesRepository.popularMoviesLiveData.observe(MoviesLifeCycleOwner(), observer)
-        popularMoviesRepository.setMoviesData()
+        popularMoviesRepository.getMovies().observe(MoviesLifeCycleOwner(), observer)
 
-        verify { observer.onChanged(ofType(PopularMovies::class)) }
+        verify {observer.onChanged(any()) }
     }
 
     @Test
-    internal fun `test parsing of popular movies`() {
+    internal fun `test parsing of popular movies list`() {
 
-        popularMoviesRepository.setMoviesData()
-
-        val popularMovies = popularMoviesRepository.popularMoviesLiveData.value
+        val popularMovies = popularMoviesRepository.getMovies().value
 
         assertAll(
-            Executable { assertEquals(1, popularMovies?.totalPages) },
-            Executable { assertEquals(20, popularMovies?.totalResults) },
-            Executable { assertEquals(20, popularMovies?.movies?.size) }
+            Executable { assertEquals(20, popularMovies?.size) }
         )
     }
 
     @Test
     internal fun `test individual popular movie is parsed correctly`() {
 
-        popularMoviesRepository.setMoviesData()
+        val popularMovies = popularMoviesRepository.getMovies().value
 
-        val popularMovies = popularMoviesRepository.popularMoviesLiveData.value
-
-        val movie = popularMovies!!.movies[1]
+        val movie = popularMovies!![1]
 
         assertAll(
 
