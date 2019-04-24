@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".ui.MovieDetailFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MovieDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-            android:id="@+id/show_id"
+            android:id="@+id/movie_title"
+            style="@style/MovieTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-</FrameLayout>
+    <ImageView
+            android:id="@+id/movie_image"
+            style="@style/MovieImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movie_title"/>
+
+    <TextView
+            android:id="@+id/movie_description"
+            style="@style/MovieBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/movie_image"
+            app:layout_constraintTop_toBottomOf="@id/movie_title"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

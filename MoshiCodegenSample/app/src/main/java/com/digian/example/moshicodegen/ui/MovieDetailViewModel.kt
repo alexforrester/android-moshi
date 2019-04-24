@@ -21,7 +21,7 @@ open class MovieDetailViewModel(application: Application) : AndroidViewModel(app
     fun getMovie(movieId : Int) : LiveData<Movie> {
 
         return Transformations.map(popularMoviesRepository.getMovies()) {
-            movieList -> movieList[movieId]
+            movieList -> movieList.find { it.id == movieId}
         }
     }
 

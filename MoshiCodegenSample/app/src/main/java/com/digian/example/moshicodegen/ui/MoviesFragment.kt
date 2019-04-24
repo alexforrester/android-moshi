@@ -38,8 +38,6 @@ class MoviesFragment : Fragment() {
     override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        activity?.title = getString(R.string.popular_movies)
-
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         moviesViewManager = LinearLayoutManager(this.context)
         moviesAdapter = MoviesAdapter(object : OnItemClickListener {

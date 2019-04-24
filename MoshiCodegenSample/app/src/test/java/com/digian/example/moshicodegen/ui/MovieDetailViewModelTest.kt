@@ -33,12 +33,12 @@ internal class MovieDetailViewModelTest {
     }
 
     @Test
-    fun `test updates to repository livedata are passed through to viewmodel and mmovie detail returned`() {
+    fun `test updates to repository livedata are passed through to viewmodel and movie detail returned when valid movie id passed in`() {
 
         val observer = mockk<Observer<Movie>>()
         every{ observer.onChanged(any()) } just Runs
 
-        moviesDetailViewModel.getMovie(1).observe(MoviesLifeCycleOwner(), observer)
+        moviesDetailViewModel.getMovie(278).observe(MoviesLifeCycleOwner(), observer)
 
         verify { observer.onChanged(any()) }
         verify { observer.onChanged(ofType(Movie::class))}
@@ -46,4 +46,23 @@ internal class MovieDetailViewModelTest {
 
         confirmVerified(observer)
     }
+
+    @Test
+    fun `test updates to repository livedata are passed through to viewmodel and movie detail not returned when invalid movie id passed in`() {
+
+        val observer = mockk<Observer<Movie>>()
+        every{ observer.onChanged(any()) } just Runs
+
+        //Verifying observer called when no movie found
+        moviesDetailViewModel.getMovie(UNKNOWN_MOVIE_ID).observe(MoviesLifeCycleOwner(), observer)
+
+        verify { observer.onChanged(any()) }
+        verify { observer.onChanged(isNull())}
+
+        confirmVerified(observer)
+    }
+
+
+
+
 }
