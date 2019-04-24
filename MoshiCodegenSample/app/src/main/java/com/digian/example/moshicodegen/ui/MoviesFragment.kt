@@ -9,6 +9,8 @@ import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,7 +42,12 @@ class MoviesFragment : Fragment() {
 
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         moviesViewManager = LinearLayoutManager(this.context)
-        moviesAdapter = MoviesAdapter()
+        moviesAdapter = MoviesAdapter(object : OnItemClickListener {
+            override fun onItemClick(movie: Movie) {
+                val action = MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(movie.id)
+                findNavController().navigate(action)
+            }
+        })
 
         moviesRecyclerView = movies_recycler_view.apply {
             setHasFixedSize(true)

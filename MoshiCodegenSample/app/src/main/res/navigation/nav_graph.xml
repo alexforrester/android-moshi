@@ -13,13 +13,15 @@
 
         <action
                 android:id="@+id/action_moviesFragment_to_movieDetailFragment"
-                app:destination="@id/movieDetailFragment" />
+                app:destination="@id/movieDetailFragment">
+            <argument android:name="movieId" app:argType="integer" android:defaultValue="0"/>
+        </action>
     </fragment>
 
     <fragment
             android:id="@+id/movieDetailFragment"
             android:name="com.digian.example.moshicodegen.ui.MovieDetailFragment"
             android:label="Blank"
-            tools:layout="@layout/fragment_movie_detail" />
+            tools:layout="@layout/fragment_movie_detail"/>
 
 </navigation>
