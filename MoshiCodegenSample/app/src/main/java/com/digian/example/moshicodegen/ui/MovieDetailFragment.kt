@@ -20,7 +20,7 @@ import com.squareup.picasso.Callback
 import java.lang.Exception
 
 const val UNKNOWN_MOVIE_ID = 0
-const val IMAGE_URL_AND_PATH = "https://image.tmdb.org/t/p/w500"
+const val IMAGE_URL_AND_PATH = "https://image.tmdb.org/t/p/w400"
 
 class MovieDetailFragment : Fragment() {
 
@@ -62,6 +62,7 @@ class MovieDetailFragment : Fragment() {
         picasso
             .load(uri)
             .error(R.drawable.baseline_error_black_48dp)
+            .placeholder(R.drawable.placeholder460_690)
             .into(movie_image, object : Callback {
                 override fun onSuccess() {
                     Log.d("PICASSO RESULT", "onSuccess")
