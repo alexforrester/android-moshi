@@ -16,11 +16,16 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import android.net.Uri
 import android.util.Log
+import android.view.Gravity
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
 import com.squareup.picasso.Callback
 import java.lang.Exception
 
 const val UNKNOWN_MOVIE_ID = 0
 const val IMAGE_URL_AND_PATH = "https://image.tmdb.org/t/p/w400"
+const val PICASSO_RESULT = "PICASSO_RESULT"
 
 class MovieDetailFragment : Fragment() {
 
@@ -41,6 +46,7 @@ class MovieDetailFragment : Fragment() {
 
         val movieId: Int = arguments?.getInt("movieId") ?: UNKNOWN_MOVIE_ID
 
+        //Loads movie detail and returns from observer or displays error view
         movieDetailViewModel.getMovie(movieId).observe(this,
             Observer<Movie> { movie ->
 
@@ -48,28 +54,42 @@ class MovieDetailFragment : Fragment() {
                     movie_title.text = movie.title
                     movie_description.text = movie.overview
                     loadImageView(movie.posterPath)
+                    return@Observer
                 }
+
+                addErrorView()
+
             })
+    }
+
+    private fun addErrorView() {
+
+        val errorTextView = TextView(activity)
+        errorTextView.text = getString(R.string.movie_detail_loading_error)
+        errorTextView.gravity = Gravity.CENTER
+        errorTextView.textSize = 20f
+        errorTextView.layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        movie_detail_root.addView(errorTextView)
     }
 
     private fun loadImageView(posterPath: String?) {
 
-        val uri : Uri = Uri.parse(IMAGE_URL_AND_PATH.plus(posterPath))
+        val uri : Uri = Uri.parse("".plus(posterPath))
 
         val picasso = Picasso.get()
         picasso.isLoggingEnabled = true
 
         picasso
             .load(uri)
-            .error(R.drawable.baseline_error_black_48dp)
+            .error(R.drawable.ic_error_black_80dp)
             .placeholder(R.drawable.placeholder460_690)
             .into(movie_image, object : Callback {
                 override fun onSuccess() {
-                    Log.d("PICASSO RESULT", "onSuccess")
+                    Log.d(PICASSO_RESULT, "onSuccess")
                 }
 
                 override fun onError(e: Exception?) {
-                    Log.e("PICASSO RESULT", "onError", e)
+                    Log.e(PICASSO_RESULT, "onError", e)
                 }
             })
     }
