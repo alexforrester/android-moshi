@@ -13,6 +13,7 @@ import java.io.InputStream
  * Created by Alex Forrester on 17/04/2019.
  *
  * Read in a flat file json list of movies from Assets folder and deserializes to list of movies before creating LiveData object
+ *
  * No caching or optimisation is performed for this example
  */
 internal interface PopularMoviesRepository {

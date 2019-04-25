@@ -30,7 +30,7 @@ internal class MoviesViewModelTest {
     }
 
     @Test
-    fun `test updates to repository livedata are passed through to viewmodel getMovies LiveData`() {
+    fun `test observer of getMovies call is called with latest LiveData`() {
 
         val observer = mockk<Observer<List<Movie>>>()
         every { observer.onChanged(any()) } just Runs

@@ -24,6 +24,9 @@ const val UNKNOWN_MOVIE_ID = 0
 const val IMAGE_URL_AND_PATH = "https://image.tmdb.org/t/p/w400"
 const val PICASSO_RESULT = "PICASSO_RESULT"
 
+/**
+ * Created by Alex Forrester on 23/04/2019.
+ */
 class MovieDetailFragment : Fragment() {
 
     private lateinit var movieDetailViewModel: MovieDetailViewModel

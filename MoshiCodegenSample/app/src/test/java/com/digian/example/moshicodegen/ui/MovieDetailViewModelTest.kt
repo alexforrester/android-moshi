@@ -33,7 +33,7 @@ internal class MovieDetailViewModelTest {
     }
 
     @Test
-    fun `test updates to repository livedata are passed through to viewmodel and movie detail returned when valid movie id passed in`() {
+    fun `test movie detail returned when valid movie id passed in with LiveData`() {
 
         val observer = mockk<Observer<Movie>>()
         every{ observer.onChanged(any()) } just Runs
@@ -43,12 +43,25 @@ internal class MovieDetailViewModelTest {
         verify { observer.onChanged(any()) }
         verify { observer.onChanged(ofType(Movie::class))}
         verify { observer.onChanged(match { it.title == "The Shawshank Redemption" })}
+        verify { observer.onChanged(match { it.originalTitle == "The Shawshank Redemption" })}
+        verify { observer.onChanged(match { it.voteCount == 12691 })}
+        verify { observer.onChanged(match { it.voteAverage == 8.7 })}
+        verify { observer.onChanged(match { it.popularity == 35.447 })}
+        verify { observer.onChanged(match { it.posterPath == "/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg" })}
+        verify { observer.onChanged(match { it.originalLanguage == "en" })}
+        verify { observer.onChanged(match { it.genreIds == listOf(18,80) })}
+        verify { observer.onChanged(match { it.backdropPath == "/j9XKiZrVeViAixVRzCta7h1VU9W.jpg" })}
+        verify { observer.onChanged(match { it.overview == "Framed in the 1940s for the double murder of his wife and her lover, " +
+                "upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. " +
+                "During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- " +
+                "for his integrity and unquenchable sense of hope." })}
+        verify { observer.onChanged(match { it.releaseDate == "1994-09-23" })}
 
         confirmVerified(observer)
     }
 
     @Test
-    fun `test updates to repository livedata are passed through to viewmodel and movie detail not returned when invalid movie id passed in`() {
+    fun `test movie detail not returned when invalid movie id passed in with LiveData`() {
 
         val observer = mockk<Observer<Movie>>()
         every{ observer.onChanged(any()) } just Runs
@@ -61,8 +74,5 @@ internal class MovieDetailViewModelTest {
 
         confirmVerified(observer)
     }
-
-
-
 
 }
