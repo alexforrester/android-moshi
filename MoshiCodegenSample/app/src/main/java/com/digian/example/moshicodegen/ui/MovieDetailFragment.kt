@@ -1,27 +1,24 @@
 package com.digian.example.moshicodegen.ui
 
 
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.annotation.Nullable
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-
 import com.digian.example.moshicodegen.R
 import com.digian.example.moshicodegen.data.Movie
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import android.net.Uri
-import android.util.Log
-import android.view.Gravity
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.widget.TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
-import com.squareup.picasso.Callback
-import java.lang.Exception
 
 const val UNKNOWN_MOVIE_ID = 0
 const val IMAGE_URL_AND_PATH = "https://image.tmdb.org/t/p/w400"
@@ -74,7 +71,7 @@ class MovieDetailFragment : Fragment() {
 
     private fun loadImageView(posterPath: String?) {
 
-        val uri : Uri = Uri.parse("".plus(posterPath))
+        val uri : Uri = Uri.parse(IMAGE_URL_AND_PATH.plus(posterPath))
 
         val picasso = Picasso.get()
         picasso.isLoggingEnabled = true
