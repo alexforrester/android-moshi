@@ -31,7 +31,7 @@ internal class MoviesViewModelTest {
     }
 
     @Test
-    fun `test observer of getMovies call is called with latest LiveData`() {
+    fun `given getMovies call made, when live data isInitialised, then adding observer emits onChanged`() {
 
         val observer = mockk<Observer<List<Movie>>>()
         every { observer.onChanged(any()) } just Runs

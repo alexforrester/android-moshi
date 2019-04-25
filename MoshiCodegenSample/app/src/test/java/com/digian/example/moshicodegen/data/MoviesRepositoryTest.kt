@@ -28,7 +28,7 @@ internal class PopularPopularMoviesRepositoryTest {
     }
 
     @Test
-    internal fun `test live data updates of popular movies`() {
+    internal fun `given live data movie list is initialised, when observer added, then observer notified`() {
 
         val observer = mockk<Observer<List<Movie>>>()
         every{ observer.onChanged(any()) } just Runs
@@ -39,7 +39,7 @@ internal class PopularPopularMoviesRepositoryTest {
     }
 
     @Test
-    internal fun `test parsing of popular movies list`() {
+    internal fun `given live data movie list is called, when flat json file parsed, then movie list created`() {
 
         val popularMovies = popularMoviesRepository.getMovies().value
 
@@ -49,7 +49,7 @@ internal class PopularPopularMoviesRepositoryTest {
     }
 
     @Test
-    internal fun `test individual popular movie is parsed correctly`() {
+    internal fun `given live data movie list is called, when flat json file parsed, then individual movie has correct state`() {
 
         val popularMovies = popularMoviesRepository.getMovies().value
 

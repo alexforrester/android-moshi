@@ -31,7 +31,7 @@ internal class MovieDetailViewModelTest {
     }
 
     @Test
-    fun `test movie detail returned when valid movie id passed in with LiveData`() {
+    fun `given valid movie id, when used to retrieve movie, then movie state returned correctly`() {
 
         val observer = mockk<Observer<Movie>>()
         every{ observer.onChanged(any()) } just Runs
@@ -59,7 +59,7 @@ internal class MovieDetailViewModelTest {
     }
 
     @Test
-    fun `test movie detail not returned when invalid movie id passed in with LiveData`() {
+    fun `given invalid movie id, when used to retrieve movie, then movie state not set`() {
 
         val observer = mockk<Observer<Movie>>()
         every{ observer.onChanged(any()) } just Runs
@@ -67,7 +67,7 @@ internal class MovieDetailViewModelTest {
         //Verifying observer called when no movie found
         moviesDetailViewModel.getMovie(UNKNOWN_MOVIE_ID).observe(MoviesLifeCycleOwner(), observer)
 
-        verify { observer.onChanged(any()) }
+        verify { observer.onChanged(any())}
         verify { observer.onChanged(isNull())}
 
         confirmVerified(observer)
