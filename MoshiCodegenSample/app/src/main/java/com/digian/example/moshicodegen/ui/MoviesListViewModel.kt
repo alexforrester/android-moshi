@@ -11,7 +11,7 @@ import com.digian.example.moshicodegen.data.PopularMoviesRepositoryImpl
 /**
  * Created by Alex Forrester on 23/04/2019.
  */
-open class MoviesViewModel(application: Application) : AndroidViewModel(application) {
+open class MoviesListViewModel(application: Application) : AndroidViewModel(application) {
 
     private val popularMoviesRepository: PopularMoviesRepository = getRepository()
 

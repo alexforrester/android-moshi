@@ -17,9 +17,9 @@ import java.io.InputStream
  * Created by Alex Forrester on 2019-04-24.
  */
 @ExtendWith(InstantExecutorExtension::class)
-internal class MoviesViewModelTest {
+internal class MoviesListViewModelTest {
 
-    private val moviesViewModel: MoviesViewModel = object : MoviesViewModel(mockk()) {
+    private val moviesListViewModel: MoviesListViewModel = object : MoviesListViewModel(mockk()) {
 
         override fun getRepository() :  PopularMoviesRepository = object :
             PopularMoviesRepositoryImpl(mockk()) {
@@ -36,7 +36,7 @@ internal class MoviesViewModelTest {
         val observer = mockk<Observer<List<Movie>>>()
         every { observer.onChanged(any()) } just Runs
 
-        moviesViewModel.getMovies().observe(MoviesLifeCycleOwner(), observer)
+        moviesListViewModel.getMovies().observe(MoviesLifeCycleOwner(), observer)
 
         verify { observer.onChanged(any()) }
         verify {

@@ -20,12 +20,12 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 /**
  * Created by Alex Forrester on 24/04/2019.
  */
-class MoviesFragment : Fragment() {
+class MoviesListFragment : Fragment() {
 
     private lateinit var moviesRecyclerView: RecyclerView
     private lateinit var moviesAdapter: MoviesAdapter
     private lateinit var moviesViewManager: RecyclerView.LayoutManager
-    private lateinit var moviesViewModel: MoviesViewModel
+    private lateinit var moviesListViewModel: MoviesListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,11 +37,11 @@ class MoviesFragment : Fragment() {
     override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
+        moviesListViewModel = ViewModelProviders.of(this).get(MoviesListViewModel::class.java)
         moviesViewManager = LinearLayoutManager(this.context)
         moviesAdapter = MoviesAdapter(object : OnItemClickListener {
             override fun onItemClick(movie: Movie) {
-                val action = MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(movie.id)
+                val action = MoviesListFragmentDirections.actionMoviesFragmentToMovieDetailFragment(movie.id)
                 findNavController().navigate(action)
             }
         })
@@ -55,7 +55,7 @@ class MoviesFragment : Fragment() {
             addItemDecoration(DividerItemDecoration(context, (layoutManager as LinearLayoutManager).orientation))
         }
 
-        moviesViewModel.getMovies().observe(this,
+        moviesListViewModel.getMovies().observe(this,
             Observer<List<Movie>> { popularMovies ->
                 moviesAdapter.data = popularMovies
             })
