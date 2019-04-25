@@ -10,16 +10,13 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.digian.example.moshicodegen.ui.MoviesActivity
-import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 /**
  * Created by Alex Forrester on 2019-04-25.
  */
-
 private const val ITEM_BELOW_THE_FOLD = 18
 private const val ITEM_TITLE_ABOVE_THE_FOLD = "The Shawshank Redemption"
 private const val ITEM_TITLE_BELOW_THE_FOLD = "12 Angry Men"

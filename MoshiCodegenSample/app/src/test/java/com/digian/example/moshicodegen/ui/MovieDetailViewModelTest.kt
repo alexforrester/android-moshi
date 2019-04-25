@@ -9,8 +9,6 @@ import com.digian.example.moshicodegen.data.PopularMoviesRepository
 import com.digian.example.moshicodegen.data.PopularMoviesRepositoryImpl
 import io.mockk.*
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.extension.ExtendWith
 import java.io.FileInputStream
 import java.io.InputStream

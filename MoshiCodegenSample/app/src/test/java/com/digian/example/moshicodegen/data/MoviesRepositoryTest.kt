@@ -1,6 +1,6 @@
 package com.digian.example.moshicodegen.data
 
-import androidx.lifecycle.*
+import androidx.lifecycle.Observer
 import com.digian.example.moshicodegen.InstantExecutorExtension
 import com.digian.example.moshicodegen.MoviesLifeCycleOwner
 import io.mockk.*

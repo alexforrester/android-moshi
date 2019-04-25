@@ -3,14 +3,15 @@ package com.digian.example.moshicodegen.ui
 import androidx.lifecycle.Observer
 import com.digian.example.moshicodegen.InstantExecutorExtension
 import com.digian.example.moshicodegen.MoviesLifeCycleOwner
-import com.digian.example.moshicodegen.data.*
-import com.squareup.moshi.Types
+import com.digian.example.moshicodegen.data.ASSET_BASE_PATH
+import com.digian.example.moshicodegen.data.Movie
+import com.digian.example.moshicodegen.data.PopularMoviesRepository
+import com.digian.example.moshicodegen.data.PopularMoviesRepositoryImpl
 import io.mockk.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import java.io.FileInputStream
 import java.io.InputStream
-import kotlin.reflect.KClass
 
 /**
  * Created by Alex Forrester on 2019-04-24.

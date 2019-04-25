@@ -3,7 +3,6 @@ package com.digian.example.moshicodegen.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.digian.example.moshicodegen.data.Movie
 
@@ -42,7 +41,6 @@ internal class MoviesAdapter(private val onItemClickListener: OnItemClickListene
     }
 
     override fun getItemCount() = data?.size ?: 0
-
 
 }
 

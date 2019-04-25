@@ -14,6 +14,8 @@ import java.io.InputStream
  *
  * Read in a flat file json list of movies from Assets folder and deserializes to list of movies before creating LiveData object
  *
+ * The Live Data object is initialised with a value when {@link #getMovies() getMovies} is called which will be emitted when observer added
+ *
  * No caching or optimisation is performed for this example
  */
 internal interface PopularMoviesRepository {

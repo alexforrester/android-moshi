@@ -26,6 +26,8 @@ const val PICASSO_RESULT = "PICASSO_RESULT"
 
 /**
  * Created by Alex Forrester on 23/04/2019.
+ *
+ * Fragment for displaying populare movies list
  */
 class MovieDetailFragment : Fragment() {
 
