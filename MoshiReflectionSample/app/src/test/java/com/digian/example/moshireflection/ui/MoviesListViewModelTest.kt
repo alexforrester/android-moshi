@@ -1,0 +1,51 @@
+package com.digian.example.moshireflection.ui
+
+import androidx.lifecycle.Observer
+import com.digian.example.moshireflection.InstantExecutorExtension
+import com.digian.example.moshireflection.MoviesLifeCycleOwner
+import com.digian.example.moshireflection.data.ASSET_BASE_PATH
+import com.digian.example.moshireflection.data.Movie
+import com.digian.example.moshireflection.data.PopularMoviesRepository
+import com.digian.example.moshireflection.data.PopularMoviesRepositoryImpl
+import io.mockk.*
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import java.io.FileInputStream
+import java.io.InputStream
+
+/**
+ * Created by Alex Forrester on 2019-04-24.
+ */
+@ExtendWith(InstantExecutorExtension::class)
+internal class MoviesListViewModelTest {
+
+    private val moviesListViewModel: MoviesListViewModel = object : MoviesListViewModel(mockk()) {
+
+        override fun getRepository() :  PopularMoviesRepository = object :
+            PopularMoviesRepositoryImpl(mockk()) {
+
+            override fun getInputStreamForJsonFile(fileName: String): InputStream {
+                return FileInputStream(ASSET_BASE_PATH + fileName)
+            }
+        }
+    }
+
+    @Test
+    fun `given getMovies call made, when live data isInitialised, then adding observer emits onChanged`() {
+
+        val observer = mockk<Observer<List<Movie>>>()
+        every { observer.onChanged(any()) } just Runs
+
+        moviesListViewModel.getMovies().observe(MoviesLifeCycleOwner(), observer)
+
+        verify { observer.onChanged(any()) }
+        verify {
+            observer.onChanged(match { it is List<Movie> })
+        }
+        verify {
+            observer.onChanged(match { it.size == 20 })
+        }
+
+        confirmVerified(observer)
+    }
+}
