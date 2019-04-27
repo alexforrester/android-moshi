@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.digian.example.moshireflection.R
+import com.digian.example.moshireflection.data.Genre
 import com.digian.example.moshireflection.data.Movie
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -52,31 +53,35 @@ class MovieDetailFragment : Fragment() {
         movieDetailViewModel.getMovie(movieId).observe(this,
             Observer<Movie> { movie ->
 
-                movie?.let {
-                    movie.genres.let{
+                movie?.let {movieDetail ->
+                    movieDetail.genres.let{ genres->
 
-                        if (it.isNotEmpty()) {
+                        if (genres.isNotEmpty()) {
                             movie_genres.visibility = View.VISIBLE
-
-                            val genres = it.map { genre ->  genre.name }
-
-                            var genresText = "GENRES: "
-                            genres.forEach {genre ->
-                                genresText += genre.plus(", ")
-                            }
-                            movie_genres.text = genresText.trimEnd().substringBeforeLast(",")
+                            movie_genres.text = createGenreText(genres)
                         }
-
                     }
-                    movie_title.text = movie.title
-                    movie_description.text = movie.overview
-                    loadImageView(movie.posterPath)
+                    movie_title.text = movieDetail.title
+                    movie_description.text = movieDetail.overview
+                    loadImageView(movieDetail.posterPath)
                     return@Observer
                 }
 
                 addErrorView()
 
             })
+    }
+
+    private fun createGenreText(genres: List<Genre>) : String {
+        val genreNames = genres.map { genre -> genre.name }
+
+        var genresText = "GENRES: "
+
+        genreNames.forEach { genre ->
+            genresText += genre.plus(", ")
+        }
+
+        return genresText.trimEnd().substringBeforeLast(",")
     }
 
     private fun addErrorView() {
