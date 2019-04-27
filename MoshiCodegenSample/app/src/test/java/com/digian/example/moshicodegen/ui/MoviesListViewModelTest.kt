@@ -40,9 +40,6 @@ internal class MoviesListViewModelTest {
 
         verify { observer.onChanged(any()) }
         verify {
-            observer.onChanged(match { it is List<Movie> })
-        }
-        verify {
             observer.onChanged(match { it.size == 20 })
         }
 

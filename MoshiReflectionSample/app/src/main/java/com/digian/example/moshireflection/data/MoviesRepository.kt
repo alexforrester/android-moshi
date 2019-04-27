@@ -25,7 +25,10 @@ internal interface PopularMoviesRepository {
 
 internal open class PopularMoviesRepositoryImpl(
     private val context: Context,
-    private val moshi: Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()) : PopularMoviesRepository {
+    private val moshi: Moshi = Moshi.Builder()
+        .add(GenreAdapter())
+        .add(KotlinJsonAdapterFactory())
+        .build()): PopularMoviesRepository {
 
     private val moviesLiveData = MutableLiveData<List<Movie>>()
 

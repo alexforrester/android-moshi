@@ -3,10 +3,7 @@ package com.digian.example.moshicodegen.ui
 import androidx.lifecycle.Observer
 import com.digian.example.moshicodegen.InstantExecutorExtension
 import com.digian.example.moshicodegen.MoviesLifeCycleOwner
-import com.digian.example.moshicodegen.data.ASSET_BASE_PATH
-import com.digian.example.moshicodegen.data.Movie
-import com.digian.example.moshicodegen.data.PopularMoviesRepository
-import com.digian.example.moshicodegen.data.PopularMoviesRepositoryImpl
+import com.digian.example.moshicodegen.data.*
 import io.mockk.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -47,7 +44,7 @@ internal class MovieDetailViewModelTest {
         verify { observer.onChanged(match { it.popularity == 35.447 })}
         verify { observer.onChanged(match { it.posterPath == "/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg" })}
         verify { observer.onChanged(match { it.originalLanguage == "en" })}
-        verify { observer.onChanged(match { it.genreIds == listOf(18,80) })}
+        verify { observer.onChanged(match { it.genres == listOf(Genre(18,"Drama"),Genre(80, "Crime")) })}
         verify { observer.onChanged(match { it.backdropPath == "/j9XKiZrVeViAixVRzCta7h1VU9W.jpg" })}
         verify { observer.onChanged(match { it.overview == "Framed in the 1940s for the double murder of his wife and her lover, " +
                 "upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. " +

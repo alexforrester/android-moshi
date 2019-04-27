@@ -67,7 +67,7 @@ internal class PopularPopularMoviesRepositoryTest {
             Executable { assertEquals("/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg", movie.posterPath) },
             Executable { assertEquals("en", movie.originalLanguage) },
             Executable { assertEquals("The Shawshank Redemption", movie.originalTitle) },
-            Executable { assertEquals(listOf(18,80), movie.genreIds) },
+            Executable { assertEquals(listOf(Genre(18,"Drama"),Genre(80, "Crime")), movie.genres) },
             Executable { assertEquals("/j9XKiZrVeViAixVRzCta7h1VU9W.jpg", movie.backdropPath) },
             Executable { assertEquals("Framed in the 1940s for the double murder of his wife and her lover, " +
                     "upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. " +

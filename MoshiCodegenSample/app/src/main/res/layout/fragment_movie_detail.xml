@@ -35,5 +35,15 @@
             app:layout_constraintEnd_toStartOf="@id/movie_image"
             app:layout_constraintTop_toBottomOf="@id/movie_title"/>
 
+    <TextView
+            android:id="@+id/movie_genres"
+            style="@style/MovieGenres"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/movie_image"
+            app:layout_constraintTop_toBottomOf="@id/movie_description"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

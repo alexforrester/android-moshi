@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
@@ -40,8 +39,10 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.1.0-alpha02"
     implementation "androidx.navigation:navigation-ui-ktx:2.1.0-alpha02"
 
-    //Moshi Reflection
+    //Moshi
     implementation "com.squareup.moshi:moshi:1.8.0"
+
+    //Moshi Reflection
     implementation "com.squareup.moshi:moshi-kotlin:1.8.0"
 
     //Image Loading

@@ -27,7 +27,7 @@ const val PICASSO_RESULT = "PICASSO_RESULT"
 /**
  * Created by Alex Forrester on 23/04/2019.
  *
- * Fragment for displaying populare movies list
+ * Fragment for displaying popular movies list
  */
 class MovieDetailFragment : Fragment() {
 
@@ -53,6 +53,21 @@ class MovieDetailFragment : Fragment() {
             Observer<Movie> { movie ->
 
                 movie?.let {
+                    movie.genres.let{
+
+                        if (it.isNotEmpty()) {
+                            movie_genres.visibility = View.VISIBLE
+
+                            val genres = it.map { genre ->  genre.name }
+
+                            var genresText = "GENRES: "
+                            genres.forEach {genre ->
+                                genresText += genre.plus(", ")
+                            }
+                            movie_genres.text = genresText.trimEnd().substringBeforeLast(",")
+                        }
+
+                    }
                     movie_title.text = movie.title
                     movie_description.text = movie.overview
                     loadImageView(movie.posterPath)

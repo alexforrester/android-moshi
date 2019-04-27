@@ -21,6 +21,14 @@
         <item name="android:paddingStart">12dp</item>
         <item name="android:layout_marginLeft">6dp</item>
     </style>
+
+    <style name="MovieGenres">
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Small</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
+    </style>
+
     <style name="MovieImage">
         <item name="android:layout_marginEnd">6dp</item>
         <item name="android:paddingStart">8dp</item>

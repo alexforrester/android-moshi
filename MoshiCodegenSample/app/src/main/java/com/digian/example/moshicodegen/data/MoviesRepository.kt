@@ -22,7 +22,11 @@ internal interface PopularMoviesRepository {
     fun getMovies(): LiveData<List<Movie>>
 }
 
-internal open class PopularMoviesRepositoryImpl(private val context: Context, private val moshi: Moshi = Moshi.Builder().build()) : PopularMoviesRepository {
+internal open class PopularMoviesRepositoryImpl(
+    private val context: Context,
+    private val moshi: Moshi = Moshi.Builder()
+        .add(GenreAdapter())
+        .build()) : PopularMoviesRepository {
 
     private val moviesLiveData = MutableLiveData<List<Movie>>()
 
