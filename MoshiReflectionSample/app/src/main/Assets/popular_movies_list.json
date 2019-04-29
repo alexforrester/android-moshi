@@ -6,7 +6,7 @@
       "vote_average": 9,
       "title": "Dilwale Dulhania Le Jayenge",
       "popularity": 15.736,
-      "poster_path": "/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg",
+      "image_path": "/uC6TTUhPpQCmgldGyYveKRAu8JN.jpg",
       "original_language": "hi",
       "original_title": "दिलवाले दुल्हनिया ले जायेंगे",
       "genre_ids": [
@@ -25,7 +25,7 @@
       "vote_average": 8.7,
       "title": "The Shawshank Redemption",
       "popularity": 35.447,
-      "poster_path": "/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg",
+      "image_path": "/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg",
       "original_language": "en",
       "original_title": "The Shawshank Redemption",
       "genre_ids": [
@@ -43,7 +43,7 @@
       "vote_average": 8.6,
       "title": "The Godfather",
       "popularity": 31.951,
-      "poster_path": "/rPdtLWNsZmAtoZl9PK7S2wE3qiS.jpg",
+      "image_path": "/rPdtLWNsZmAtoZl9PK7S2wE3qiS.jpg",
       "original_language": "en",
       "original_title": "The Godfather",
       "genre_ids": [
@@ -61,7 +61,7 @@
       "vote_average": 8.6,
       "title": "Your Name.",
       "popularity": 20.66,
-      "poster_path": "/xq1Ugd62d23K2knRUx6xxuALTZB.jpg",
+      "image_path": "/xq1Ugd62d23K2knRUx6xxuALTZB.jpg",
       "original_language": "ja",
       "original_title": "君の名は。",
       "genre_ids": [
@@ -80,7 +80,7 @@
       "vote_average": 8.5,
       "title": "Schindler's List",
       "popularity": 28.643,
-      "poster_path": "/yPisjyLweCl1tbgwgtzBCNCBle.jpg",
+      "image_path": "/yPisjyLweCl1tbgwgtzBCNCBle.jpg",
       "original_language": "en",
       "original_title": "Schindler's List",
       "genre_ids": [
@@ -100,7 +100,7 @@
       "vote_average": 8.5,
       "title": "The Godfather: Part II",
       "popularity": 17.785,
-      "poster_path": "/bVq65huQ8vHDd1a4Z37QtuyEvpA.jpg",
+      "image_path": "/bVq65huQ8vHDd1a4Z37QtuyEvpA.jpg",
       "original_language": "en",
       "original_title": "The Godfather: Part II",
       "genre_ids": [
@@ -118,7 +118,7 @@
       "vote_average": 8.5,
       "title": "Spirited Away",
       "popularity": 27.894,
-      "poster_path": "/oRvMaJOmapypFUcQqpgHMZA6qL9.jpg",
+      "image_path": "/oRvMaJOmapypFUcQqpgHMZA6qL9.jpg",
       "original_language": "ja",
       "original_title": "千と千尋の神隠し",
       "genre_ids": [
@@ -137,7 +137,7 @@
       "vote_average": 8.5,
       "title": "Spider-Man: Into the Spider-Verse",
       "popularity": 94.663,
-      "poster_path": "/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+      "image_path": "/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
       "original_language": "en",
       "original_title": "Spider-Man: Into the Spider-Verse",
       "genre_ids": [
@@ -158,7 +158,7 @@
       "vote_average": 8.4,
       "title": "The Green Mile",
       "popularity": 21.303,
-      "poster_path": "/sOHqdY1RnSn6kcfAHKu28jvTebE.jpg",
+      "image_path": "/sOHqdY1RnSn6kcfAHKu28jvTebE.jpg",
       "original_language": "en",
       "original_title": "The Green Mile",
       "genre_ids": [
@@ -177,7 +177,7 @@
       "vote_average": 8.4,
       "title": "Life Is Beautiful",
       "popularity": 20.749,
-      "poster_path": "/f7DImXDebOs148U4uPjI61iDvaK.jpg",
+      "image_path": "/f7DImXDebOs148U4uPjI61iDvaK.jpg",
       "original_language": "it",
       "original_title": "La vita è bella",
       "genre_ids": [
@@ -195,7 +195,7 @@
       "vote_average": 8.4,
       "title": "A Dog's Will",
       "popularity": 9.927,
-      "poster_path": "/uHEmM49YphluJnGep8Ef1qwD2QX.jpg",
+      "image_path": "/uHEmM49YphluJnGep8Ef1qwD2QX.jpg",
       "original_language": "pt",
       "original_title": "O Auto da Compadecida",
       "genre_ids": [
@@ -213,7 +213,7 @@
       "vote_average": 8.4,
       "title": "Pulp Fiction",
       "popularity": 31.908,
-      "poster_path": "/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
+      "image_path": "/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
       "original_language": "en",
       "original_title": "Pulp Fiction",
       "genre_ids": [
@@ -231,7 +231,7 @@
       "vote_average": 8.4,
       "title": "The Dark Knight",
       "popularity": 36.151,
-      "poster_path": "/1hRoyzDtpgMU7Dz4JF22RANzQO7.jpg",
+      "image_path": "/1hRoyzDtpgMU7Dz4JF22RANzQO7.jpg",
       "original_language": "en",
       "original_title": "The Dark Knight",
       "genre_ids": [
@@ -251,7 +251,7 @@
       "vote_average": 8.4,
       "title": "Fight Club",
       "popularity": 26.349,
-      "poster_path": "/adw6Lq9FiC9zjYEpOqfq03ituwp.jpg",
+      "image_path": "/adw6Lq9FiC9zjYEpOqfq03ituwp.jpg",
       "original_language": "en",
       "original_title": "Fight Club",
       "genre_ids": [
@@ -268,7 +268,7 @@
       "vote_average": 8.4,
       "title": "Psycho",
       "popularity": 20.62,
-      "poster_path": "/81d8oyEFgj7FlxJqSDXWr8JH8kV.jpg",
+      "image_path": "/81d8oyEFgj7FlxJqSDXWr8JH8kV.jpg",
       "original_language": "en",
       "original_title": "Psycho",
       "genre_ids": [
@@ -285,7 +285,7 @@
       "vote_average": 8.4,
       "title": "Forrest Gump",
       "popularity": 25.594,
-      "poster_path": "/yE5d3BUhE8hCnkMUJOo1QDoOGNz.jpg",
+      "image_path": "/yE5d3BUhE8hCnkMUJOo1QDoOGNz.jpg",
       "original_language": "en",
       "original_title": "Forrest Gump",
       "genre_ids": [
@@ -304,7 +304,7 @@
       "vote_average": 8.4,
       "title": "Capernaum",
       "popularity": 18.23,
-      "poster_path": "/dQWfLmt9aU6Xe6yNPmEZJoLOPxX.jpg",
+      "image_path": "/dQWfLmt9aU6Xe6yNPmEZJoLOPxX.jpg",
       "original_language": "ar",
       "original_title": "کفرناحوم",
       "genre_ids": [
@@ -321,7 +321,7 @@
       "vote_average": 8.4,
       "title": "The Lord of the Rings: The Return of the King",
       "popularity": 37.957,
-      "poster_path": "/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
+      "image_path": "/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
       "original_language": "en",
       "original_title": "The Lord of the Rings: The Return of the King",
       "genre_ids": [
@@ -340,7 +340,7 @@
       "vote_average": 8.4,
       "title": "12 Angry Men",
       "popularity": 21.166,
-      "poster_path": "/3W0v956XxSG5xgm7LB6qu8ExYJ2.jpg",
+      "image_path": "/3W0v956XxSG5xgm7LB6qu8ExYJ2.jpg",
       "original_language": "en",
       "original_title": "12 Angry Men",
       "genre_ids": [
@@ -357,7 +357,7 @@
       "vote_average": 8.4,
       "title": "Grave of the Fireflies",
       "popularity": 0.6,
-      "poster_path": "/4u1vptE8aXuzb5zauZTmikyectV.jpg",
+      "image_path": "/4u1vptE8aXuzb5zauZTmikyectV.jpg",
       "original_language": "ja",
       "original_title": "火垂るの墓",
       "genre_ids": [

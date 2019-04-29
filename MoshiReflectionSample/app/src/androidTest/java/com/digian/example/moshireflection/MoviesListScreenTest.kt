@@ -45,9 +45,13 @@ class MoviesListScreenTest {
     }
 
     @Test
-    fun  given_app_first_loaded_when_scrolled_to_below_the_fold_then_movie_title_is_displayed() {
+    fun given_app_first_loaded_when_scrolled_to_below_the_fold_then_movie_title_is_displayed() {
 
-        onView(withId(R.id.movies_recycler_view)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(ITEM_BELOW_THE_FOLD))
+        onView(withId(R.id.movies_recycler_view)).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                ITEM_BELOW_THE_FOLD
+            )
+        )
 
         val itemElementText = ITEM_TITLE_BELOW_THE_FOLD
 
@@ -56,18 +60,28 @@ class MoviesListScreenTest {
     }
 
     @Test
-    fun  given_app_first_loaded_and_scrolled_to_below_the_fold_when_clicked_then_movie_details_are_displayed() {
-
-        onView(withId(R.id.movies_recycler_view)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(ITEM_BELOW_THE_FOLD))
-
-        val movieTitleText = ITEM_TITLE_BELOW_THE_FOLD
-        val movieDescriptionText = "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other."
+    fun given_app_first_loaded_and_scrolled_to_below_the_fold_when_clicked_then_movie_details_are_displayed() {
 
         onView(withId(R.id.movies_recycler_view)).perform(
-            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(ITEM_BELOW_THE_FOLD, click()))
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                ITEM_BELOW_THE_FOLD
+            )
+        )
+
+        val movieTitleText = ITEM_TITLE_BELOW_THE_FOLD
+        val movieDescriptionText =
+            "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other."
+        val movieVotes = "VOTES: 3603"
+        val movieGenres = "GENRES: Drama"
+
+        onView(withId(R.id.movies_recycler_view)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(ITEM_BELOW_THE_FOLD, click())
+        )
 
         onView(withText(movieTitleText)).check(matches(isDisplayed()))
         onView(withText(movieDescriptionText)).check(matches(isDisplayed()))
+        onView(withText(movieVotes)).check(matches(isDisplayed()))
+        onView(withText(movieGenres)).check(matches(isDisplayed()))
         onView(withId(R.id.movie_image)).check(matches(isDisplayed()))
 
     }

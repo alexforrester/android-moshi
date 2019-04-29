@@ -28,9 +28,27 @@ const val PICASSO_RESULT = "PICASSO_RESULT"
 /**
  * Created by Alex Forrester on 23/04/2019.
  *
- * Fragment for displaying popular movies list
+ * Fragment for displaying movie detail
  */
 class MovieDetailFragment : Fragment() {
+
+    companion object {
+        fun createGenreText(genres: List<Genre>) : String {
+            val genreNames = genres.map { genre -> genre.name }
+
+            if (genres.isEmpty()) {
+                return ""
+            }
+
+            var genresText = "GENRES: "
+
+            genreNames.forEach { genre ->
+                genresText += genre.plus(", ")
+            }
+
+            return genresText.trimEnd().substringBeforeLast(",")
+        }
+    }
 
     private lateinit var movieDetailViewModel: MovieDetailViewModel
 
@@ -63,25 +81,14 @@ class MovieDetailFragment : Fragment() {
                     }
                     movie_title.text = movieDetail.title
                     movie_description.text = movieDetail.overview
-                    loadImageView(movieDetail.posterPath)
+                    movie_votes.text = if (movieDetail.voteCount != -1) "VOTES: ${movieDetail.voteCount}" else ""
+                    loadImageView(movieDetail.imagePath)
                     return@Observer
                 }
 
                 addErrorView()
 
             })
-    }
-
-    private fun createGenreText(genres: List<Genre>) : String {
-        val genreNames = genres.map { genre -> genre.name }
-
-        var genresText = "GENRES: "
-
-        genreNames.forEach { genre ->
-            genresText += genre.plus(", ")
-        }
-
-        return genresText.trimEnd().substringBeforeLast(",")
     }
 
     private fun addErrorView() {

@@ -28,9 +28,27 @@ const val PICASSO_RESULT = "PICASSO_RESULT"
 /**
  * Created by Alex Forrester on 23/04/2019.
  *
- * Fragment for displaying popular movies list
+ * Fragment for displaying movie detail
  */
 class MovieDetailFragment : Fragment() {
+
+    companion object {
+        fun createGenreText(genres: List<Genre>): String {
+            val genreNames = genres.map { genre -> genre.name }
+
+            if (genres.isEmpty()) {
+                return ""
+            }
+
+            var genresText = "GENRES: "
+
+            genreNames.forEach { genre ->
+                genresText += genre.plus(", ")
+            }
+
+            return genresText.trimEnd().substringBeforeLast(",")
+        }
+    }
 
     private lateinit var movieDetailViewModel: MovieDetailViewModel
 
@@ -53,8 +71,8 @@ class MovieDetailFragment : Fragment() {
         movieDetailViewModel.getMovie(movieId).observe(this,
             Observer<Movie> { movie ->
 
-                movie?.let {movieDetail ->
-                    movieDetail.genres.let{ genres->
+                movie?.let { movieDetail ->
+                    movieDetail.genres.let { genres ->
 
                         if (genres.isNotEmpty()) {
                             movie_genres.visibility = View.VISIBLE
@@ -63,7 +81,8 @@ class MovieDetailFragment : Fragment() {
                     }
                     movie_title.text = movieDetail.title
                     movie_description.text = movieDetail.overview
-                    loadImageView(movieDetail.posterPath)
+                    movie_votes.text = if (movieDetail.voteCount != -1) "VOTES: ${movieDetail.voteCount}" else ""
+                    loadImageView(movieDetail.imagePath)
                     return@Observer
                 }
 
@@ -72,31 +91,20 @@ class MovieDetailFragment : Fragment() {
             })
     }
 
-    private fun createGenreText(genres: List<Genre>) : String {
-        val genreNames = genres.map { genre -> genre.name }
-
-        var genresText = "GENRES: "
-
-        genreNames.forEach { genre ->
-            genresText += genre.plus(", ")
-        }
-
-        return genresText.trimEnd().substringBeforeLast(",")
-    }
-
     private fun addErrorView() {
 
         val errorTextView = TextView(activity)
         errorTextView.text = getString(R.string.movie_detail_loading_error)
         errorTextView.gravity = Gravity.CENTER
         errorTextView.textSize = 20f
-        errorTextView.layoutParams = ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        errorTextView.layoutParams =
+            ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         movie_detail_root.addView(errorTextView)
     }
 
     private fun loadImageView(posterPath: String?) {
 
-        val uri : Uri = Uri.parse(IMAGE_URL_AND_PATH.plus(posterPath))
+        val uri: Uri = Uri.parse(IMAGE_URL_AND_PATH.plus(posterPath))
 
         val picasso = Picasso.get()
         picasso.isLoggingEnabled = true
@@ -115,5 +123,4 @@ class MovieDetailFragment : Fragment() {
                 }
             })
     }
-
 }
