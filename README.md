@@ -1,5 +1,5 @@
 # android-moshi
-Uses Android Architecture Components to illustrate moshi parsing of json into kotlin objects with different implementations
+Uses Android Architecture Components to illustrate moshi parsing of json into kotlin objects with Moshi codegen and reflection
 
 There are a number of libraries for parsing json into kotlin/java objects including Gson, Jackson and Moshi
 
