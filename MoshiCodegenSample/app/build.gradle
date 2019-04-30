@@ -40,8 +40,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.1.0-alpha02"
     implementation "androidx.navigation:navigation-ui-ktx:2.1.0-alpha02"
 
-    //Moshi
+    //Moshi Core Artifact
     implementation "com.squareup.moshi:moshi:$moshi_version"
+    //Moshi Codegen
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
     //Image Loading

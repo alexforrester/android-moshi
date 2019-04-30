@@ -17,7 +17,8 @@ import java.io.InputStream
  *
  * The Live Data object is initialised with a value when {@link #getMovies() getMovies} is called which will be emitted when observer added
  *
- * No caching or optimisation is performed for this example
+ * No caching, optimisation or DI on Moshi instance is performed for this example
+ *
  */
 internal interface PopularMoviesRepository {
     fun getMovies(): LiveData<List<Movie>>
