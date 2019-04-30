@@ -4,10 +4,11 @@ import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.ToJson
 
-
 /**
  * Created by Alex Forrester on 2019-04-26.
- */
+ *
+ * Movie genres from the The movie database - https://www.themoviedb.org/
+*/
 class GenreAdapter  {
 
         @ToJson
