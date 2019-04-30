@@ -42,6 +42,7 @@ dependencies {
 
     //Moshi Core Artifact
     implementation "com.squareup.moshi:moshi:$moshi_version"
+
     //Moshi Codegen
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
