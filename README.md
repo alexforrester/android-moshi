@@ -7,10 +7,13 @@ There are a number of libraries for parsing json into kotlin/java objects includ
 
 ### App Description and Implementation
 
-Both samples use androidx, ViewModel, LiveData and Navigation architecture components to display a list of Popular movies from [The Movie Database](https://www.themoviedb.org) which has been added as a file in the Assets folder. Selecting a movie will display a movie detail page including title, overview, image, the popularity of the movie in terms of the votes received and the genres it belongs to. The genres demonstrate bespoke parsing with Moshi to map Genre ids to Genres from the ingested JSON
+Both samples use androidx and ViewModel, LiveData and Navigation architecture components to display a list of Popular movies from [The Movie Database](https://www.themoviedb.org) which has been added as a file in the Assets folder. Selecting a movie will display a movie detail page including title, overview, image, the popularity of the movie in terms of the votes received and the genres it belongs to. The genres demonstrate bespoke parsing with Moshi to map Genre ids to Genres from the ingested JSON.\
+\
+Unit tests use [JUnit 5](https://junit.org/junit5) and [Mockk](https://github.com/mockk/mockk)\
+Integration Tests use [Espresso](https://developer.android.com/training/testing/espresso)
 
 ### Moshi Codegen and Reflection
-The two samples differ only in how Moshi has been included with either the moshi-kotlin-codegen artifact for codegen and the moshi-kotlin artifact for reflection. The pros and cons of both are detailed in the [Moshi](https://github.com/square/moshi) repo.
+The two samples differ only in how Moshi has been included and implemented with either the moshi-kotlin-codegen artifact for codegen and the moshi-kotlin artifact for reflection. The pros and cons of both are detailed in the [Moshi](https://github.com/square/moshi) repo.
 
 
 
