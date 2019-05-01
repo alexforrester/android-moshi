@@ -13,7 +13,7 @@ Unit tests use [JUnit 5](https://junit.org/junit5) and [Mockk](https://github.co
 Integration Tests use [Espresso](https://developer.android.com/training/testing/espresso)
 
 ### Moshi Codegen and Reflection
-The two samples differ only in how Moshi has been included and implemented with either the moshi-kotlin-codegen artifact for codegen and the moshi-kotlin artifact for reflection. The pros and cons of both are detailed in the [Moshi](https://github.com/square/moshi) repo.
+The two samples differ only in how Moshi has been included and implemented with either the moshi-kotlin-codegen artifact for codegen and the moshi-kotlin artifact for reflection. More detail about the two options are in the [official documentation](https://github.com/square/moshi#Kotlin).
 
 
 
