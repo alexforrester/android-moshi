@@ -16,6 +16,7 @@ open class MovieDetailViewModel(application: Application) : AndroidViewModel(app
 
     private val popularMoviesRepository: PopularMoviesRepository = getRepository()
 
+    //TODO("Add coroutines to run off main thread")
     fun getMovie(movieId : Int) : LiveData<Movie> {
 
         return Transformations.map(popularMoviesRepository.getMovies()) {
